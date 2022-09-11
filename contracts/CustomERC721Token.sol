@@ -13,18 +13,18 @@ contract Ownable {
     //  1) create a private '_owner' variable of type address with a public getter function
     address private _owner;
 
-    function getOwner() public returns (address) {
-        return this._owner;
+    function getOwner() public view returns (address) {
+        return _owner;
     }
 
     //  2) create an internal constructor that sets the _owner var to the creater of the contract
-    constructor() internal {
-        this._owner = msg.sender;
+    constructor() {
+        _owner = msg.sender;
     }
 
     //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
     modifier onlyOwner() {
-        require(msg.sender != this._owner, "Only owner can call this function");
+        require(msg.sender != _owner, "Only owner can call this function");
         _;
     }
     //  4) fill out the transferOwnership function
@@ -39,7 +39,7 @@ contract Ownable {
         // TODO add functionality to transfer control of the contract to a newOwner.
         // make sure the new owner is a real address
         require(isValidAddress(newOwner), "This is not a valid address");
-        this._owner = newOwner;
+        _owner = newOwner;
         emit TransferingOwnership(newOwner);
     }
 }
@@ -52,11 +52,11 @@ contract Pausable is Ownable {
     //  2) create a public setter using the inherited onlyOwner modifier
     function setPaused(bool isPaused) public onlyOwner {
         require(isPaused != _paused, "Contract already paused");
-        isPaused = paused;
+        isPaused = _paused;
     }
 
     //  3) create an internal constructor that sets the _paused variable to false
-    constructor() internal {
+    constructor() {
         _paused = false;
     }
 
@@ -89,7 +89,7 @@ contract ERC165 {
      * @dev A contract implementing SupportsInterfaceWithLookup
      * implement ERC165 itself
      */
-    constructor() internal {
+    constructor() {
         _registerInterface(_INTERFACE_ID_ERC165);
     }
 
@@ -280,7 +280,7 @@ contract ERC721 is Pausable, ERC165 {
 
     // @dev Internal function to mint a new token
     // TIP: remember the functions to use for Counters. you can refresh yourself with the link above
-    function _mint(address to, uint256 tokenId) internal {
+    function _mint(address to, uint256 tokenId) internal virtual {
         // TODO revert if given tokenId already exists or given address is invalid
         require(!_exists(tokenId), "given tokenId already exists");
         require(isValidAddress(to), "given address is invalid");
@@ -297,7 +297,7 @@ contract ERC721 is Pausable, ERC165 {
         address from,
         address to,
         uint256 tokenId
-    ) internal {
+    ) internal virtual {
         // TODO: require from address is the owner of the given token
         require(
             from == _tokenOwner[tokenId],
@@ -429,7 +429,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
         address from,
         address to,
         uint256 tokenId
-    ) internal {
+    ) internal override {
         super._transferFrom(from, to, tokenId);
 
         _removeTokenFromOwnerEnumeration(from, tokenId);
@@ -443,7 +443,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
      * @param to address the beneficiary that will own the minted token
      * @param tokenId uint256 ID of the token to be minted
      */
-    function _mint(address to, uint256 tokenId) internal {
+    function _mint(address to, uint256 tokenId) internal override {
         super._mint(to, tokenId);
 
         _addTokenToOwnerEnumeration(to, tokenId);
@@ -497,7 +497,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
         // To prevent a gap in from's tokens array, we store the last token in the index of the token to delete, and
         // then delete the last slot (swap and pop).
 
-        uint256 lastTokenIndex = _ownedTokens[from].length.sub(1);
+        uint256 lastTokenIndex = _ownedTokens[from].length - 1;
         uint256 tokenIndex = _ownedTokensIndex[tokenId];
 
         // When the token to delete is the last token, the swap operation is unnecessary
@@ -509,7 +509,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
         }
 
         // This also deletes the contents at the last position of the array
-        _ownedTokens[from].length--;
+        _ownedTokens[from].pop();
 
         // Note that _ownedTokensIndex[tokenId] hasn't been cleared: it still points to the old slot (now occupied by
         // lastTokenId, or just over the end of the array if the token was the last one).
@@ -524,7 +524,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
         // To prevent a gap in the tokens array, we store the last token in the index of the token to delete, and
         // then delete the last slot (swap and pop).
 
-        uint256 lastTokenIndex = _allTokens.length.sub(1);
+        uint256 lastTokenIndex = _allTokens.length - 1;
         uint256 tokenIndex = _allTokensIndex[tokenId];
 
         // When the token to delete is the last token, the swap operation is unnecessary. However, since this occurs so
@@ -536,12 +536,12 @@ contract ERC721Enumerable is ERC165, ERC721 {
         _allTokensIndex[lastTokenId] = tokenIndex; // Update the moved token's index
 
         // This also deletes the contents at the last position of the array
-        _allTokens.length--;
+        _allTokens.pop();
         _allTokensIndex[tokenId] = 0;
     }
 }
 
-contract ERC721Metadata is ERC721Enumerable, usingOraclize {
+contract ERC721Metadata is ERC721Enumerable, usingProvable {
     // TODO: Create private vars for token _name, _symbol, and _baseTokenURI (string)
     string private _name;
     string private _symbol;
@@ -598,7 +598,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     // see https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.5.sol for strConcat()
     // require the token exists before setting
     function setTokenURItoSpecifiedTokenId(uint256 tokenId) internal {
-        require(_exist(tokenId), "This token  not exist");
+        require(_exists(tokenId), "This token  not exist");
         string memory tokenIdtoString = uint2str(tokenId);
         string memory tokenURI = strConcat(_baseTokenURI, tokenIdtoString);
         _tokenURIs[tokenId] = tokenURI;

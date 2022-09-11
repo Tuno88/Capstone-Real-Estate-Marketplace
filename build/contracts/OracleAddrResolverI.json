@@ -1,0 +1,149 @@
+{
+  "contractName": "OracleAddrResolverI",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/interfaces/provable-address-resolver-interface.sol\":\"OracleAddrResolverI\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/interfaces/provable-address-resolver-interface.sol\":{\"keccak256\":\"0xaa35585e8b21d6d0464ff3269842512f157bd7688b691c0923fa6230c9d59542\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f81a5377e59525481a18c35e4a96226b38ef1c980c6f68077ff3c68508b694c8\",\"dweb:/ipfs/Qmbq45i3FFszV9HSQDz14hS3LM4tpsTtdzzULqDkZUAjsH\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity >=0.8.0 <0.9.0;\r\n\r\ninterface OracleAddrResolverI {\r\n    function getAddress() external returns (address _address);\r\n}\r\n",
+  "sourcePath": "C:\\Users\\ACER\\Desktop\\Capstone\\Capstone-Real-Estate-Marketplace\\interfaces\\provable-address-resolver-interface.sol",
+  "ast": {
+    "absolutePath": "project:/interfaces/provable-address-resolver-interface.sol",
+    "exportedSymbols": {
+      "OracleAddrResolverI": [
+        7554
+      ]
+    },
+    "id": 7555,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7548,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:31:8"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "OracleAddrResolverI",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7554,
+        "linearizedBaseContracts": [
+          7554
+        ],
+        "name": "OracleAddrResolverI",
+        "nameLocation": "78:19:8",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "38cc4831",
+            "id": 7553,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAddress",
+            "nameLocation": "114:10:8",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7549,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "124:2:8"
+            },
+            "returnParameters": {
+              "id": 7552,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7551,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "153:8:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7553,
+                  "src": "145:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7550,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "145:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "144:18:8"
+            },
+            "scope": 7554,
+            "src": "105:58:8",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7555,
+        "src": "68:98:8",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:135:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-09-11T18:33:50.810Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
