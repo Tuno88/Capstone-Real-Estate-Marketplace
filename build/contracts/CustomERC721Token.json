@@ -1,0 +1,117 @@
+{
+  "contractName": "CustomERC721Token",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/CustomERC721Token.sol\":\"CustomERC721Token\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/CustomERC721Token.sol\":{\"keccak256\":\"0x0ddfbcf7ec4f1b2042dd22d3ae236476b2d958b2585e71ce833485e0f5aa064d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2f47e4d69d1c3cceea95e3604401c8b37e97987784e8b1529efe66e5bddf816d\",\"dweb:/ipfs/QmdyonhQMU8SzyMLddUB4BTQ1kd3ztc1VPPAv1f69cY3WL\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212201b2ccd24c4f03da61cf9e12e8b737594cce24e93c4893b2258096373e47d0cdb64736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212201b2ccd24c4f03da61cf9e12e8b737594cce24e93c4893b2258096373e47d0cdb64736f6c63430008110033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "66:59:0:-:0;;;97:26;;;;;;;;;;66:59;;;;;;",
+  "deployedSourceMap": "66:59:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract CustomERC721Token {\n  constructor() public {\n  }\n}\n",
+  "sourcePath": "C:\\Users\\ACER\\Desktop\\Capstone\\Blockchain-Capstone\\contracts\\CustomERC721Token.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/CustomERC721Token.sol",
+    "exportedSymbols": {
+      "CustomERC721Token": [
+        6
+      ]
+    },
+    "id": 7,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "CustomERC721Token",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "CustomERC721Token",
+        "nameLocation": "75:17:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "118:5:0",
+              "statements": []
+            },
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "108:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "118:0:0"
+            },
+            "scope": 6,
+            "src": "97:26:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "66:59:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:94:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-09-11T11:33:46.177Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

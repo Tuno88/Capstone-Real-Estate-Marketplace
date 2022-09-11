@@ -1,29 +1,38 @@
 var ERC721MintableComplete = artifacts.require("CustomERC721Token");
 
 contract("TestERC721Mintable", (accounts) => {
-  const account_one = accounts[0];
-  const account_two = accounts[1];
-  const account_three = accounts[2];
+  let owner = accounts[1];
+  const account_one = accounts[2];
+  const account_two = accounts[3];
+  const account_three = accounts[4];
 
   describe("match erc721 spec", function () {
+    console.log("before");
     beforeEach(async function () {
-      this.contract = await ERC721MintableComplete.new({ from: account_one });
-
+      this.contract = await ERC721MintableComplete.new({ from: owner });
+      console.log("after");
       // TODO: mint multiple tokens
-      await this.contract.mint(account_one, 1);
-      await this.contract.mint(account_two, 2);
-      await this.contract.mint(account_two, 3);
-      await this.contract.mint(account_three, 4);
-      await this.contract.mint(account_three, 5);
+      try {
+        await this.contract.mint(account_one, 122, { from: owner });
+        await this.contract.mint(account_two, 123, { from: owner });
+        await this.contract.mint(account_two, 124, { from: owner });
+        await this.contract.mint(account_three, 125, { from: owner });
+        await this.contract.mint(account_three, 126, { from: owner });
+      } catch (e) {
+        console.log("error: ", e);
+      }
     });
 
     it("should return total supply", async function () {
+      console.log("1--------");
       let allTokens = this.contract.totalSupply.call();
+      console.log("allTokens", allTokens);
       assert.equal(allTokens, 5, "Do not match total Supplies");
     });
 
     it("should get token balance", async function () {
       let tokenBalance = this.contract.balanceOf.call(account_one);
+      console.log("tokenBalance", tokenBalance);
       assert.equal(tokenBalance, 1, "Do not match token balance");
     });
 
