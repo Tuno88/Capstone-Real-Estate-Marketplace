@@ -1,3 +1,4 @@
+//SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.17;
 
 // TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
