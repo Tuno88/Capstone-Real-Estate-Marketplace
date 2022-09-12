@@ -31,7 +31,7 @@ contract Ownable {
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
     event TransferingOwnership(address newOwner);
 
-    function isValidAddress(address _address) public returns (bool) {
+    function isValidAddress(address _address) public pure returns (bool) {
         return _address != address(0);
     }
 
@@ -50,7 +50,7 @@ contract Pausable is Ownable {
     bool private _paused;
 
     //  2) create a public setter using the inherited onlyOwner modifier
-    function setPaused(bool isPaused) public onlyOwner {
+    function setPaused(bool isPaused) public view onlyOwner {
         require(isPaused != _paused, "Contract already paused");
         isPaused = _paused;
     }
@@ -157,7 +157,7 @@ contract ERC721 is Pausable, ERC165 {
 
     bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
 
-    constructor() public {
+    constructor() {
         // register the supported interfaces to conform to ERC721 via ERC165
         _registerInterface(_INTERFACE_ID_ERC721);
     }
@@ -379,7 +379,7 @@ contract ERC721Enumerable is ERC165, ERC721 {
     /**
      * @dev Constructor function
      */
-    constructor() public {
+    constructor() {
         // register the supported interface to conform to ERC721Enumerable via ERC165
         _registerInterface(_INTERFACE_ID_ERC721_ENUMERABLE);
     }
@@ -616,7 +616,6 @@ contract ERC721Metadata is ERC721Enumerable, usingProvable {
 
 contract CustomERC721Token is ERC721Metadata {
     constructor()
-        public
         ERC721Metadata(
             "My Custom ERC",
             "tuno",
@@ -624,11 +623,12 @@ contract CustomERC721Token is ERC721Metadata {
         )
     {}
 
-    function mint(
-        address to,
-        uint256 tokenId,
-        string memory tokenURI
-    ) public onlyOwner returns (bool) {
+    function mint(address to, uint256 tokenId)
+        public
+        // string memory tokenURI
+        onlyOwner
+        returns (bool)
+    {
         super._mint(to, tokenId);
         super.setTokenURItoSpecifiedTokenId(tokenId);
         return true;
